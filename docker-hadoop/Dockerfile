@@ -26,7 +26,7 @@ WORKDIR /opt/hadoop-2.7.1
 COPY etc /opt/hadoop-2.7.1/etc
 
 # expose the port
-EXPOSE 8000
+EXPOSE 8088 50070
 # execute the command to run the Hadoop
 CMD share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount input output
 
