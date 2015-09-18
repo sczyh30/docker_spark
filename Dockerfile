@@ -24,7 +24,7 @@ ENV SCALA_HOME /opt/scala-2.10.5
 #ENV HADOOP_HOME /opt/hadoop-2.7.1
 
 # install Spark 1.5
-RUN cd/opt && curl -O http://www.eu.apache.org/dist/spark/spark-1.5.0/spark-1.5.0-bin-hadoop2.6.tgz \
+RUN cd /opt && curl -O http://www.eu.apache.org/dist/spark/spark-1.5.0/spark-1.5.0-bin-hadoop2.6.tgz \
 	&& tar -xzvf spark-1.5.0-bin-hadoop2.6.tgz && rm -rf spark-1.5.0-bin-hadoop2.6.tgz \
 	&& mv spark-1.5.0-bin-hadoop2.6 spark-1.5.0
 ENV SPARK_HOME /opt/spark-1.5.0
@@ -32,7 +32,8 @@ ENV SPARK_HOME /opt/spark-1.5.0
 ENV PATH $PATH:$SCALA_HOME/bin
 ENV PATH $PATH:$SPARK_HOME/bin
 
+EXPOSE 8080 7077
 #WORKDIR /opt
 
-CMD /opt/spark-1.5.0/sbin/start-master.sh
+CMD /opt/spark-1.5.0/bin/spark-class org.apache.spark.deploy.master.Master -i 127.0.0.1
 
