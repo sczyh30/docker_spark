@@ -20,7 +20,7 @@ RUN cd /opt && curl -O ftp://ftp.meisei-u.ac.jp/mirror/apache/dist/hadoop/common
 ENV HADOOP_HOME /opt/hadoop-2.7.1
 
 # set the workdir
-WORKDIR /opt/hadoop-2.7.1
+#WORKDIR /opt/hadoop-2.7.1
 
 # copy the configure files
 COPY etc /opt/hadoop-2.7.1/etc
@@ -28,5 +28,5 @@ COPY etc /opt/hadoop-2.7.1/etc
 # expose the port
 EXPOSE 8088 50070
 # execute the command to run the Hadoop
-CMD share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount input output
+CMD /hadoop-2.7.1/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar wordcount input output
 
